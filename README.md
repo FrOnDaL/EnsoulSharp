@@ -1,4 +1,4 @@
-# EnsoulSharp - FrOnDaL AIO
+# FrOnDaL AIO
   - <b>Supported Champions </b><br>
   Ashe
   
