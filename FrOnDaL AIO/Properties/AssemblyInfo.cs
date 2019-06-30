@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("FrOnDaL AIO")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("FrOnDaL")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FrOnDaL AIO")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
