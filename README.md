@@ -10,5 +10,5 @@
   AutoLevelUp<br>
   BaseUlti<br>
   Tracker<br>
-  <br>
-  <br>
+  - <b>Discord </b><br>
+https://discord.gg/gN9XtR
