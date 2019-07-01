@@ -85,7 +85,6 @@
   <ItemGroup>
     <Compile Include="Champions\Ashe.cs" />
     <Compile Include="Common\Utilities\Extensions.cs" />
-    <Compile Include="Common\Utilities\GameObjects.cs" />
     <Compile Include="Common\Utilities\SpellBlocking\BlockSpellData.cs" />
     <Compile Include="Common\Utilities\SpellBlocking\BlockSpellDataBase.cs" />
     <Compile Include="Common\Utilities\SpellBlocking\Collision.cs" />
