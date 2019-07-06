@@ -86,7 +86,7 @@ namespace FrOnDaL_AIO.Champions
 
                 var laneClear = new Menu("laneClear", "LaneClear");
                 {
-                    laneClear.Add(new MenuKeyBind("clearOn", "Lane clear (On/Off)", Keys.G, KeyBindType.Toggle));
+                    laneClear.Add(new MenuKeyBind("clearOn", "Lane clear (On/Off)", Keys.G, KeyBindType.Toggle,"false"));
                     laneClear.Add(new MenuBool("clearQ", "Use lane clear Q"));
                     laneClear.Add(new MenuBool("clearQlastq", "Use lane clear Q Last Hit"));
                     laneClear.Add(new MenuBool("clearQlastaa", "Q Don't Last Hit in AA Range"));
