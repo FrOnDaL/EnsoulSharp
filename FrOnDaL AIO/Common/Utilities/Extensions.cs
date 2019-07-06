@@ -82,7 +82,7 @@ namespace FrOnDaL_AIO.Common.Utilities
         }
         public static AIHeroClient GetBestKillableHeroEQ(DamageType damageType = DamageType.True, bool ignoreShields = false)
         {
-            return TargetSelector.GetTargets(1800).FirstOrDefault(t => t.IsValidTarget());
+            return TargetSelector.GetTargets(1300).FirstOrDefault(t => t.IsValidTarget());
         }
         /// <summary>
         ///     Gets the valid enemy heroes targets in the game.

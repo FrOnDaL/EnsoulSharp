@@ -23,6 +23,11 @@ namespace FrOnDaL_AIO
                         Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
                         break;
+                    case "Katarina":
+                        Katarina.GameOn();
+                        Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
+                        Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
+                        break;
                     default:
                         Chat.PrintChat("<font color='#b756c5' size='25'>FrOnDaL AIO Does Not Support " + ObjectManager.Player.CharacterName + " - By FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO Does Not Support " + ObjectManager.Player.CharacterName + " - By FrOnDaL");

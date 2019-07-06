@@ -148,7 +148,6 @@ namespace FrOnDaL_AIO.Champions
                     {
                         LaneClear();
                     }
-                    
                     JungleClear();
                     break;
             }
