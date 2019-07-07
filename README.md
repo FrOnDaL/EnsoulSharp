@@ -1,7 +1,9 @@
 # EnsoulSharp - FrOnDaL AIO
   - <b>Supported Champions </b><br>
   Ashe<br>
-  Katarina
+  Katarina<br>
+  - <b>Utilities </b><br>
+  Damage Indicator
   
   - <b>Next Champion </b><br>
   Orianna
