@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using Collision = FrOnDaL_AIO.Common.Utilities.SpellBlocking.Collision;
 using Menu = EnsoulSharp.SDK.MenuUI.Menu;
 
+
 namespace FrOnDaL_AIO.Champions
 {
     public class Ashe
@@ -29,7 +30,7 @@ namespace FrOnDaL_AIO.Champions
             Q = new Spell(SpellSlot.Q, 600);
             W = new Spell(SpellSlot.W, 1250f);
             W2 = new Spell(SpellSlot.W, 1250f);
-            //E = new Spell(SpellSlot.E, 900);
+            E = new Spell(SpellSlot.E, 900);
             R = new Spell(SpellSlot.R, 3000f);
 
             
@@ -106,6 +107,7 @@ namespace FrOnDaL_AIO.Champions
                 ashe.Add(drawings);
             }
             Main.Add(ashe);
+            Common.DamageIndicator.DamageIndicator.Attach(Main);
             Main.Attach();
 
             Game.OnUpdate += Game_OnUpdate;

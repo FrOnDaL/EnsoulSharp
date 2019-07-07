@@ -33,5 +33,9 @@ namespace FrOnDaL_AIO.Common.Utilities
         {
             renderText.DrawText(null, text, (int)tPosX, (int)tPosY, tColor.ToSharpDxColor());
         }
+        public static void RenderDrawText(string text, Vector2 pos, Color color, int size = 0)
+        {
+            Drawing.DrawText(pos,color,text, size);
+        }
     }
 }

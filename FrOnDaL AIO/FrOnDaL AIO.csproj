@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Champions\Ashe.cs" />
     <Compile Include="Champions\Katarina.cs" />
+    <Compile Include="Common\DamageIndicator\DamageIndicator.cs" />
     <Compile Include="Common\Utilities\Extensions.cs" />
     <Compile Include="Common\Utilities\SpellBlocking\BlockSpellData.cs" />
     <Compile Include="Common\Utilities\SpellBlocking\BlockSpellDataBase.cs" />

@@ -32,13 +32,13 @@ namespace FrOnDaL_AIO.Champions
             W = new Spell(SpellSlot.W, 350);
             E = new Spell(SpellSlot.E, 725);
             R = new Spell(SpellSlot.R, 550);
-            TextFont = new Font(Drawing.Direct3DDevice, new FontDescription
+            /*TextFont = new Font(Drawing.Direct3DDevice, new FontDescription
             {
                 FaceName = "Tahoma",
                 Height = 14, Weight = FontWeight.Normal,
                 OutputPrecision = FontPrecision.Default,
                 Quality = FontQuality.Default
-            });
+            });*/
             Main = new Menu("Index", "FrOnDaL AIO", true);
             
             var katarina = new Menu(Gamer.CharacterName, Gamer.CharacterName);
@@ -123,13 +123,15 @@ namespace FrOnDaL_AIO.Champions
                 }
                 katarina.Add(drawings);
             }
+
             Main.Add(katarina);
+            Common.DamageIndicator.DamageIndicator.Attach(Main);
             Main.Attach();
             
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += SpellDraw;
         }
-        
+
         private static readonly IEnumerable<AIBaseClient> Daggers = ObjectManager.Get<AIBaseClient>().Where(x => x.Name == "HiddenMinion" && x.IsValid && !x.IsDead);
         public static double DaggersPassive(AIBaseClient target)
         {
@@ -206,11 +208,13 @@ namespace FrOnDaL_AIO.Champions
             {
                 if (Main[Gamer.CharacterName]["laneClear"]["clearOn"].GetValue<MenuKeyBind>().Active)
                 {
-                    RenderFontText(TextFont, "LaneClear: On", Drawing.Width * 0.44f, Drawing.Height * 0.54f, Color.LimeGreen);
+                    //RenderFontText(TextFont, "LaneClear: On", Drawing.Width * 0.44f, Drawing.Height * 0.54f, Color.LimeGreen);
+                    RenderDrawText("LaneClear: On", Gamer.HPBarPosition + new Vector2(-35, 160), Color.LawnGreen, 15);
                 }
                 else
                 {
-                    RenderFontText(TextFont, "LaneClear: Off", Drawing.Width * 0.44f, Drawing.Height * 0.54f, Color.Red);
+                    //RenderFontText(TextFont, "LaneClear: Off", Drawing.Width * 0.44f, Drawing.Height * 0.54f, Color.Red);
+                    RenderDrawText("LaneClear: Off", Gamer.HPBarPosition + new Vector2(-35, 160), Color.Red, 15);
                 }
             }
             if (Main[Gamer.CharacterName]["drawings"]["dagdraw"])
@@ -257,7 +261,6 @@ namespace FrOnDaL_AIO.Champions
                     LastHit();
                     break;
             }
-
 
             if (Orbwalker.ActiveMode != OrbwalkerMode.Combo || Orbwalker.ActiveMode != OrbwalkerMode.Harass)
             {
@@ -349,7 +352,6 @@ namespace FrOnDaL_AIO.Champions
                     }
                 }
             }*/
-            
             if (Gamer.HasBuff("katarinarsound"))
             {
                 if (Main[Gamer.CharacterName]["combo"]["rCancel"])
@@ -414,6 +416,7 @@ namespace FrOnDaL_AIO.Champions
                     {
                         if (target != null)
                         {
+                            if (Gamer.HasBuff("katarinarsound")) return;
                             Q.CastOnUnit(target);
                         }
                     }
@@ -423,6 +426,7 @@ namespace FrOnDaL_AIO.Champions
                     {
                         if (target != null)
                         {
+                            if (Gamer.HasBuff("katarinarsound")) return;
                             if (Main[Gamer.CharacterName]["combo"]["eTur"] && target.IsUnderEnemyTurret())
                             {
                                 return;
@@ -542,6 +546,7 @@ namespace FrOnDaL_AIO.Champions
                     {
                         if (target != null)
                         {
+                            if (Gamer.HasBuff("katarinarsound")) return;
                             W.Cast();
                         }
                     }
@@ -583,6 +588,7 @@ namespace FrOnDaL_AIO.Champions
                     {
                         if (target != null)
                         {
+                            if (Gamer.HasBuff("katarinarsound")) return;
                             if (Main[Gamer.CharacterName]["combo"]["eTur"] && target.IsUnderEnemyTurret())
                             {
                                 return;
@@ -703,6 +709,7 @@ namespace FrOnDaL_AIO.Champions
                     {
                         if (target != null)
                         {
+                            if (Gamer.HasBuff("katarinarsound")) return;
                             W.Cast();
                         }
                     }
@@ -710,6 +717,7 @@ namespace FrOnDaL_AIO.Champions
                     {
                         if (target != null)
                         {
+                            if (Gamer.HasBuff("katarinarsound")) return;
                             Q.CastOnUnit(target);
                         }
                     }
@@ -1179,6 +1187,5 @@ namespace FrOnDaL_AIO.Champions
                 }
             }
         }
-        
     }
 }
