@@ -45,7 +45,7 @@ namespace FrOnDaL_AIO.Champions
             {
                 var combo = new Menu("combo", "Combo");
                 {
-                    combo.Add(new MenuList<string>("qBa", "Q attack", new[] { "After attack use combo Q", "Before attack use combo Q", "Normal use combo Q" }) { Index = 1 });
+                    combo.Add(new MenuList ("qBa", "Q attack", new[] { "After attack use combo Q", "Before attack use combo Q", "Normal use combo Q" }) { Index = 1 });
                     combo.Add(new MenuBool("w", "Use combo W"));
                     //combo.Add(new MenuBool("e", "Use combo E"));
                     combo.Add(new MenuSeparator("0", "R Settings"));
@@ -58,7 +58,7 @@ namespace FrOnDaL_AIO.Champions
                     }
                     combo.Add(whiteListR);
                     combo.Add(new MenuKeyBind("keyR", "Semi-manual cast R key", Keys.T, KeyBindType.Press));
-                    combo.Add(new MenuList<string>("rHit", "R HitChance", new[] { "High", "Medium", "Low" }) { Index = 2 });
+                    combo.Add(new MenuList ("rHit", "R HitChance", new[] { "High", "Medium", "Low" }) { Index = 2 });
                 }
                 ashe.Add(combo);
                 var harass = new Menu("harass", "Harass");
@@ -182,7 +182,7 @@ namespace FrOnDaL_AIO.Champions
         {
             if (Q.IsReady())
             {
-                if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("qBa").Index == 0 || Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("qBa").Index == 1)
+                if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("qBa").Index == 0 || Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("qBa").Index == 1)
                 {
                     Orbwalker.OnAction += AttackAction;
                 }
@@ -212,11 +212,11 @@ namespace FrOnDaL_AIO.Champions
             var target = GetBestEnemyHeroTargetInRange(Gamer.GetRealAutoAttackRange() - 40);
             if (!target.IsValidTarget(Gamer.GetRealAutoAttackRange() - 40)) return;
             if (target == null) return;
-            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("qBa").Index == 0 && attack.Type == OrbwalkerType.AfterAttack)
+            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("qBa").Index == 0 && attack.Type == OrbwalkerType.AfterAttack)
             {
                 Q.Cast();
             }
-            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("qBa").Index == 1 && attack.Type == OrbwalkerType.BeforeAttack)
+            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("qBa").Index == 1 && attack.Type == OrbwalkerType.BeforeAttack)
             {
                 Q.Cast();
             }
@@ -308,7 +308,7 @@ namespace FrOnDaL_AIO.Champions
         private static HitChance RHitChance()
         {
             var rHit = HitChance.Medium;
-            switch (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rHit").Index)
+            switch (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rHit").Index)
             {
                 case 0:
                     rHit = HitChance.High;

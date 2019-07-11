@@ -45,16 +45,16 @@ namespace FrOnDaL_AIO.Champions
             {
                 var combo = new Menu("combo", "Combo");
                 {
-                    combo.Add(new MenuList<string>("cMode", "Combo mode :", new[] { "Q - E", "E - Q" }) { Index = 1 });
+                    combo.Add(new MenuList("cMode", "Combo mode :", new[] { "Q - E", "E - Q" }) { Index = 1 });
                     combo.Add(new MenuBool("q", "Use combo Q"));
                     combo.Add(new MenuBool("w", "Use combo W"));
                     combo.Add(new MenuSeparator("0", "E Settings"));
                     combo.Add(new MenuBool("e", "Use combo E"));
                     combo.Add(new MenuBool("eTur", "Dont E under the turret", false));
                     combo.Add(new MenuBool("edag", "Save E if no daggers", false));
-                    combo.Add(new MenuList<string>("eMode", "E mode :", new[] { "Infront", "Behind", "Logic" }) { Index = 0 });
+                    combo.Add(new MenuList ("eMode", "E mode :", new[] { "Infront", "Behind", "Logic" }) { Index = 0 });
                     combo.Add(new MenuSeparator("1", "R Settings"));
-                    combo.Add(new MenuList<string>("rMode", "R mode :", new[] { "If x health", "Only if killable", "Never" }) { Index = 1 });
+                    combo.Add(new MenuList ("rMode", "R mode :", new[] { "If x health", "Only if killable", "Never" }) { Index = 1 });
                     combo.Add(new MenuSlider("rHealt", "Enemies health percentage % to use R (-R mode 'If x health' is active-)", 40, 1));
                     combo.Add(new MenuBool("rCancel", "Cancel R if no Enemies"));
                 }
@@ -62,7 +62,7 @@ namespace FrOnDaL_AIO.Champions
 
                 var harass = new Menu("harass", "Harass");
                 {
-                    harass.Add(new MenuList<string>("hMode", "Harass mode :", new[] { "Q - E", "E - Q" }) { Index = 1 });
+                    harass.Add(new MenuList ("hMode", "Harass mode :", new[] { "Q - E", "E - Q" }) { Index = 1 });
                     harass.Add(new MenuBool("harq", "Use harass Q"));
                     harass.Add(new MenuBool("harqAuto", "Use harass Q auto", false));
                     harass.Add(new MenuBool("harw", "Use harass W", false));
@@ -70,7 +70,7 @@ namespace FrOnDaL_AIO.Champions
                     harass.Add(new MenuBool("hare", "Use harass E", false));
                     harass.Add(new MenuBool("hareTur", "Dont E under the turret", false));
                     harass.Add(new MenuBool("haredag", "Save E if no daggers", false));
-                    harass.Add(new MenuList<string>("hareMode", "Harass E mode :", new[] { "Infront", "Behind", "Logic" }) { Index = 0 });
+                    harass.Add(new MenuList ("hareMode", "Harass E mode :", new[] { "Infront", "Behind", "Logic" }) { Index = 0 });
                 }
                 katarina.Add(harass);
 
@@ -403,7 +403,7 @@ namespace FrOnDaL_AIO.Champions
                 return;
             }
 
-            switch (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("cMode").Index)
+            switch (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("cMode").Index)
             {
                 case 0:
 
@@ -443,15 +443,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -460,15 +460,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         if (daggers.Distance(Gamer) > E.Range)
                                         {
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if(Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if(Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -478,15 +478,15 @@ namespace FrOnDaL_AIO.Champions
                                         if (daggers.Distance(target) > 450)
                                         {
 
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -496,15 +496,15 @@ namespace FrOnDaL_AIO.Champions
                                     }
                                     if (!Daggers.Any())
                                     {
-                                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, -50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, 50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                         {
                                             E.Cast(R.IsReady()
                                                 ? target.Position.Extend(Gamer.Position, -50)
@@ -522,15 +522,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -551,9 +551,9 @@ namespace FrOnDaL_AIO.Champions
                         }
                     }
 
-                    if (R.IsReady() && Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rMode").Index != 2)
+                    if (R.IsReady() && Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rMode").Index != 2)
                     {
-                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rMode").Index == 0)
+                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rMode").Index == 0)
                         {
                             if (target.IsValidTarget(R.Range - 150))
                             {
@@ -563,7 +563,7 @@ namespace FrOnDaL_AIO.Champions
                                 }
                             }
                         }
-                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rMode").Index == 1)
+                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rMode").Index == 1)
                         {
                             if (target.IsValidTarget(R.Range - 150))
                             {
@@ -605,15 +605,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -622,15 +622,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         if (daggers.Distance(Gamer) > E.Range)
                                         {
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -640,15 +640,15 @@ namespace FrOnDaL_AIO.Champions
                                         if (daggers.Distance(target) > 450)
                                         {
 
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -658,15 +658,15 @@ namespace FrOnDaL_AIO.Champions
                                     }
                                     if (!Daggers.Any())
                                     {
-                                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, -50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, 50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                        else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                         {
                                             E.Cast(R.IsReady()
                                                 ? target.Position.Extend(Gamer.Position, -50)
@@ -684,15 +684,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("eMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("eMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -721,9 +721,9 @@ namespace FrOnDaL_AIO.Champions
                             Q.CastOnUnit(target);
                         }
                     }
-                    if (R.IsReady() && Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rMode").Index != 2)
+                    if (R.IsReady() && Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rMode").Index != 2)
                     {
-                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rMode").Index == 0)
+                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rMode").Index == 0)
                         {
                             if (target.IsValidTarget(R.Range - 150))
                             {
@@ -733,7 +733,7 @@ namespace FrOnDaL_AIO.Champions
                                 }
                             }
                         }
-                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList<string>>("rMode").Index == 1)
+                        if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList >("rMode").Index == 1)
                         {
                             if (target.IsValidTarget(R.Range - 150))
                             {
@@ -759,7 +759,7 @@ namespace FrOnDaL_AIO.Champions
                 return;
             }
 
-            switch (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hMode").Index)
+            switch (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hMode").Index)
             {
                 case 0:
 
@@ -797,15 +797,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -814,15 +814,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         if (daggers.Distance(Gamer) > E.Range)
                                         {
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -832,15 +832,15 @@ namespace FrOnDaL_AIO.Champions
                                         if (daggers.Distance(target) > 450)
                                         {
 
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -850,15 +850,15 @@ namespace FrOnDaL_AIO.Champions
                                     }
                                     if (!Daggers.Any())
                                     {
-                                        if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                        if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, -50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, 50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                         {
                                             E.Cast(R.IsReady()
                                                 ? target.Position.Extend(Gamer.Position, -50)
@@ -876,15 +876,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -930,15 +930,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -947,15 +947,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         if (daggers.Distance(Gamer) > E.Range)
                                         {
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -965,15 +965,15 @@ namespace FrOnDaL_AIO.Champions
                                         if (daggers.Distance(target) > 450)
                                         {
 
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
@@ -983,15 +983,15 @@ namespace FrOnDaL_AIO.Champions
                                     }
                                     if (!Daggers.Any())
                                     {
-                                        if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                        if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, -50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                         {
                                             E.Cast(target.Position.Extend(Gamer.Position, 50));
                                         }
-                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                        else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                         {
                                             E.Cast(R.IsReady()
                                                 ? target.Position.Extend(Gamer.Position, -50)
@@ -1009,15 +1009,15 @@ namespace FrOnDaL_AIO.Champions
                                         }
                                         else
                                         {
-                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 0) //In-front
+                                            if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 0) //In-front
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, -50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 1)//Behind
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 1)//Behind
                                             {
                                                 E.Cast(target.Position.Extend(Gamer.Position, 50));
                                             }
-                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList<string>>("hareMode").Index == 2)//Logic
+                                            else if (Main[Gamer.CharacterName]["harass"].GetValue<MenuList >("hareMode").Index == 2)//Logic
                                             {
                                                 E.Cast(R.IsReady()
                                                     ? target.Position.Extend(Gamer.Position, -50)
