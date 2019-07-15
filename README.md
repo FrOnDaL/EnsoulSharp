@@ -2,11 +2,12 @@
   - <b>Supported Champions </b><br>
   Ashe<br>
   Katarina<br>
+  Orianna<br>
   - <b>Utilities </b><br>
   Damage Indicator
   
   - <b>Next Champion </b><br>
-  Orianna
+  Nasus and Aatrox
   
   - <b>To Do List</b><br>
   Activator<br>
