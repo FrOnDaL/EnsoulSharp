@@ -1,30 +1,21 @@
 ﻿using System;
-using System.IO;
+using EnsoulSharp;
 using System.Linq;
 using EnsoulSharp.SDK;
-using EnsoulSharp.SDK.MenuUI;
-using EnsoulSharp.SDK.Prediction;
+using System.Windows.Forms;
 using EnsoulSharp.SDK.Utility;
+using EnsoulSharp.SDK.Prediction;
 using Color = System.Drawing.Color;
-using EnsoulSharp;
 using EnsoulSharp.SDK.MenuUI.Values;
-using FrOnDaL_AIO.Common;
+using Menu = EnsoulSharp.SDK.MenuUI.Menu;
 using FrOnDaL_AIO.Common.Utilities.SPrediction;
 using static FrOnDaL_AIO.Common.Utilities.spellMisc;
 using static FrOnDaL_AIO.Common.Utilities.Extensions;
-using System.Windows.Forms;
-using Collision = FrOnDaL_AIO.Common.Utilities.SpellBlocking.Collision;
-using Menu = EnsoulSharp.SDK.MenuUI.Menu;
-
 
 namespace FrOnDaL_AIO.Champions
 {
     public class Ashe
     {
-        /*private static bool AsheQBuff(AIBaseClient unit)
-        {
-            return unit.HasBuff("AsheQ");
-        }*/
         public static void GameOn()
         {
             Q = new Spell(SpellSlot.Q, 600);
@@ -33,10 +24,8 @@ namespace FrOnDaL_AIO.Champions
             E = new Spell(SpellSlot.E, 900);
             R = new Spell(SpellSlot.R, 3000f);
 
-            
             W.SetSkillshot(250, 50, 1500, true, SkillshotType.Line);
             W2.SetSkillshot(0.70f, 125f, 1500, true, SkillshotType.Circle);
-            //E.SetSkillshot(300, 400, 1050, false, SkillshotType.Line);
             R.SetSkillshot(250, 90, 1600, true, SkillshotType.Line);
 
             Main = new Menu("Index", "FrOnDaL AIO", true);
@@ -47,7 +36,6 @@ namespace FrOnDaL_AIO.Champions
                 {
                     combo.Add(new MenuList ("qBa", "Q attack", new[] { "After attack use combo Q", "Before attack use combo Q", "Normal use combo Q" }) { Index = 1 });
                     combo.Add(new MenuBool("w", "Use combo W"));
-                    //combo.Add(new MenuBool("e", "Use combo E"));
                     combo.Add(new MenuSeparator("0", "R Settings"));
                     var whiteListR = new Menu("whiteListR", "R white list");
                     {
@@ -175,7 +163,6 @@ namespace FrOnDaL_AIO.Champions
                     R.Cast(rPred.CastPosition);
                 }
             }
-
         }
 
         private static void Combo()
@@ -237,35 +224,33 @@ namespace FrOnDaL_AIO.Champions
         }
         private static void LaneClear()
         {
-            /*if (W.IsReady() && Main[Gamer.CharacterName]["laneClear"]["clearW"] && Gamer.ManaPercent > Main[Gamer.CharacterName]["laneClear"]["clearM"].GetValue<MenuSlider>().Value)
-            {
-                var minions = GameObjects.EnemyMinions.Where(x => x.IsValidTarget(W2.Range) && x.IsMinion())
-                    .Cast<AIBaseClient>().ToList();
-                if (minions.Any())
-                {
-                    var wPredMinion = W2.GetCircularFarmLocation(minions);
-                    if (wPredMinion.Position.IsValid() &&
-                        wPredMinion.MinionsHit >= 2)
-                    {
-                        W.Cast(wPredMinion.Position);
-                        return;
-                    }
-                }
-            }*/
-
             if (W.IsReady() && Main[Gamer.CharacterName]["laneClear"]["clearW"] && Gamer.ManaPercent >= Main[Gamer.CharacterName]["laneClear"]["clearM"].GetValue<MenuSlider>().Value)
             {
                 var wPredMinion = W2.GetCircularFarmLocation(MinionManager.GetMinions(Gamer.Position, W2.Range), 170);
 
-                if (wPredMinion.MinionsHit >= Main[Gamer.CharacterName]["laneClear"]["clearCountW"].GetValue<MenuSlider>().Value)
+                if (wPredMinion.MinionsHit == 0)
                 {
-                    W.Cast(wPredMinion.Position);
+                    foreach (var target in GameObjects.EnemyMinions.Where(x => x.IsValidTarget(W.Range)))
+                    {
+                        if (target != null)
+                        {
+                            if (GameObjects.EnemyMinions.Count(x => x.IsValidTarget(170, x.IsLaneMinion, W.GetPrediction(target).CastPosition)) >= Main[Gamer.CharacterName]["laneClear"]["clearCountW"].GetValue<MenuSlider>().Value)
+                            {
+                                W.Cast(W.GetPrediction(target).CastPosition);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (wPredMinion.MinionsHit >= Main[Gamer.CharacterName]["laneClear"]["clearCountW"].GetValue<MenuSlider>().Value)
+                    {
+                        W.Cast(wPredMinion.Position);
+                    }
                 }
             }
             if (Q.IsReady() && Main[Gamer.CharacterName]["laneClear"]["clearQ"] && Gamer.ManaPercent >= Main[Gamer.CharacterName]["laneClear"]["clearM"].GetValue<MenuSlider>().Value)
             {
-                //var minions = GetEnemyLaneMinionsTargetsInRange(900).ToList(); //Bug
-
                 var minions = GameObjects.EnemyMinions.Where(x => x.IsValidTarget(900)).ToList();
                 if (!minions.Any()) return;
                 if (minions.Count >= Main[Gamer.CharacterName]["laneClear"]["clearCountQ"].GetValue<MenuSlider>().Value)
@@ -300,7 +285,7 @@ namespace FrOnDaL_AIO.Champions
 
         private static void DangerousSpellsInterupt(AIHeroClient sender, Interrupter.InterruptSpellArgs args)
         {
-            if (Main[Gamer.CharacterName]["interrupt"]["interruptR"] && R.IsReady() && args.DangerLevel >= Interrupter.DangerLevel.Medium && sender.DistanceToPlayer() < 1500)
+            if (Main[Gamer.CharacterName]["interrupt"]["interruptR"] && R.IsReady() && args.DangerLevel >= Interrupter.DangerLevel.Medium && sender.DistanceToPlayer() < 1500 && sender.IsEnemy)
             {
                 R.Cast(sender.Position);
             }

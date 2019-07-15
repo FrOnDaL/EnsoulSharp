@@ -40,7 +40,7 @@ namespace FrOnDaL_AIO.Common.Utilities.SpellBlocking
             }
             Menu.Add(EvadeSpellMenu);
 
-            SkillShotMenu = new Menu("Skillshots", "¶Ü¸ñµ²¼¼ÄÜÉè¶¨");
+            SkillShotMenu = new Menu("Skillshots", "Skill Shots");
             {
                 try
                 {

@@ -36,13 +36,7 @@ namespace FrOnDaL_AIO.Common.Utilities.SpellBlocking
             new DamageBoostSpell { Champion = "Lucian", Spell = "LucianQ", Slot = "Q", Priority = 2 },
             new DamageBoostSpell { Champion = "Lucian", Spell = "LucianW", Slot = "W", Priority = 1 },
             new DamageBoostSpell { Champion = "Lucian", Spell = "LucianR", Slot = "R", Priority = 3 },
-            new DamageBoostSpell
-            {
-                Champion = "MissFortune",
-                Spell = "MissFortuneRicochetShot",
-                Slot = "Q",
-                Priority = 2
-            },
+            new DamageBoostSpell { Champion = "MissFortune",  Spell = "MissFortuneRicochetShot",  Slot = "Q", Priority = 2 },
             new DamageBoostSpell { Champion = "MissFortune", Spell = "MissFortuneBulletTime", Slot = "R", Priority = 3 },
             new DamageBoostSpell { Champion = "Quinn", Spell = "QuinnQ", Slot = "Q", Priority = 1 },
             new DamageBoostSpell { Champion = "Quinn", Spell = "QuinnE", Slot = "E", Priority = 2 },

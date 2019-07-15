@@ -1,6 +1,6 @@
-﻿using EnsoulSharp;
+﻿using System;
+using EnsoulSharp;
 using EnsoulSharp.SDK;
-using System;
 using FrOnDaL_AIO.Champions;
 
 namespace FrOnDaL_AIO
@@ -25,6 +25,11 @@ namespace FrOnDaL_AIO
                         break;
                     case "Katarina":
                         Katarina.GameOn();
+                        Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
+                        Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
+                        break;
+                    case "Orianna":
+                        Orianna.GameOn();
                         Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
                         break;

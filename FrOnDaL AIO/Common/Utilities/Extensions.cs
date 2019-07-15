@@ -75,6 +75,16 @@ namespace FrOnDaL_AIO.Common.Utilities
             return null;
         }
 
+        public static AIHeroClient GetBestAllyHeroTargetInRange(float range)
+        {
+            var target = TargetSelector.GetTarget(range);
+            if (target != null && target.IsValidTarget() && !target.IsInvulnerable)
+            {
+                return target;
+            }
+            return null;
+        }
+
         public static AIHeroClient GetBestKillableHero(Spell spell, DamageType damageType = DamageType.True,
           bool ignoreShields = false)
         {

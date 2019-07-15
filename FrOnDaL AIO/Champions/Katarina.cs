@@ -1,40 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
+using SharpDX;
+using EnsoulSharp;
 using System.Linq;
 using EnsoulSharp.SDK;
-using EnsoulSharp.SDK.MenuUI;
-using EnsoulSharp.SDK.Prediction;
+using System.Windows.Forms;
 using EnsoulSharp.SDK.Utility;
+using System.Collections.Generic;
 using Color = System.Drawing.Color;
-using EnsoulSharp;
 using EnsoulSharp.SDK.MenuUI.Values;
-using FrOnDaL_AIO.Common;
-using FrOnDaL_AIO.Common.Utilities.SPrediction;
+using Menu = EnsoulSharp.SDK.MenuUI.Menu;
 using static FrOnDaL_AIO.Common.Utilities.spellMisc;
 using static FrOnDaL_AIO.Common.Utilities.Extensions;
-using System.Windows.Forms;
-using SharpDX;
-using SharpDX.Direct3D9;
-using Collision = FrOnDaL_AIO.Common.Utilities.SpellBlocking.Collision;
-using Menu = EnsoulSharp.SDK.MenuUI.Menu;
 
 namespace FrOnDaL_AIO.Champions
 {
-
     public class Katarina
     {
-        
         public static void GameOn()
         {
-
             Q = new Spell(SpellSlot.Q, 625);
             W = new Spell(SpellSlot.W, 350);
             E = new Spell(SpellSlot.E, 725);
             R = new Spell(SpellSlot.R, 550);
             /*TextFont = new Font(Drawing.Direct3DDevice, new FontDescription
             {
-                FaceName = "Tahoma",
+                FaceName = "mahomet",
                 Height = 14, Weight = FontWeight.Normal,
                 OutputPrecision = FontPrecision.Default,
                 Quality = FontQuality.Default
@@ -101,8 +91,8 @@ namespace FrOnDaL_AIO.Champions
                 var jungClear = new Menu("jungClear", "JungClear");
                 {
                     jungClear.Add(new MenuBool("jungClearQ", "Use jung clear Q"));
-                    jungClear.Add(new MenuBool("jungClearW", "Use jung clear Clear W"));
-                    jungClear.Add(new MenuBool("jungClearE", "Use jung clear Clear E"));
+                    jungClear.Add(new MenuBool("jungClearW", "Use jung clear W"));
+                    jungClear.Add(new MenuBool("jungClearE", "Use jung clear E"));
                 }
                 katarina.Add(jungClear);
 
@@ -342,16 +332,6 @@ namespace FrOnDaL_AIO.Champions
         {
             var target = GetBestEnemyHeroTargetInRange(E.Range);
 
-            /*if (W.IsReady() && target.Distance(Gamer.Position) <= 500 && !Q.IsReady() && !E.IsReady() && !R.IsReady()) bug
-            {
-                if (target != null)
-                {
-                    if (target.Health <= 100)
-                    {
-                        W.Cast();
-                    }
-                }
-            }*/
             if (Gamer.HasBuff("katarinarsound"))
             {
                 if (Main[Gamer.CharacterName]["combo"]["rCancel"])
@@ -1136,8 +1116,7 @@ namespace FrOnDaL_AIO.Champions
                 }
             }
 
-            if (E.IsReady() && Main[Gamer.CharacterName]["jungClear"]["jungClearE"] && monster.IsValidTarget(E.Range) &&
-                        !Q.IsReady())
+            if (E.IsReady() && Main[Gamer.CharacterName]["jungClear"]["jungClearE"] && monster.IsValidTarget(E.Range) && !Q.IsReady())
             {
                 if (monster != null)
                 {
