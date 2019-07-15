@@ -521,7 +521,7 @@ namespace FrOnDaL_AIO.Champions
                 if (target != null)
                 {
                     var collision = E.GetCollisions(_ballPos.ToVector2() - 50).Units.Where(x => (x is AIHeroClient)).Count(x => x.IsEnemy);
-                    if (collision >= 1)
+                    if (collision >= 1 && target.Health > R.GetDamage(target) + W.GetDamage(target))
                     {
                         foreach (var ballDistance in GameObjects.EnemyHeroes.Where(x => x.IsValidTarget()))
                         {
@@ -547,7 +547,7 @@ namespace FrOnDaL_AIO.Champions
                         }
                     }
                     if (Main[Gamer.CharacterName]["combo"].GetValue<MenuList>("rMode").Index != 1) continue;
-                    if (target.Health < R.GetDamage(target))
+                    if (target.Health < R.GetDamage(target) && target.CountEnemyHeroesInRange(350) >= 1)
                     {
                         R.Cast();
                     }
