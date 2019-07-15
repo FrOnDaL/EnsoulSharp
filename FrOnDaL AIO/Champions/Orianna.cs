@@ -480,7 +480,7 @@ namespace FrOnDaL_AIO.Champions
 
                             foreach (var ballDistance in GameObjects.EnemyHeroes)
                             {
-                                if (_ballPos.Distance(ballDistance.Position) > 1400 && Main[Gamer.CharacterName]["combo"]["distE"])
+                                if (_ballPos.Distance(ballDistance.Position) > 1400 && Main[Gamer.CharacterName]["combo"]["distE"] && E.IsReady())
                                 {
                                     E.CastOnUnit(Gamer);
                                     Q.Cast(qPred.CastPosition);
