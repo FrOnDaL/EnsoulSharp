@@ -7,7 +7,7 @@
   Damage Indicator
   
   - <b>Next Champion </b><br>
-  Nasus and Aatrox
+  Nasus and Aatrox (Maybe Azir:D)
   
   - <b>To Do List</b><br>
   Activator<br>
