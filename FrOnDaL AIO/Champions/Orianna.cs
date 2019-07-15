@@ -124,7 +124,7 @@ namespace FrOnDaL_AIO.Champions
                     laneClear.Add(new MenuSlider("clearCountQ", "Q hit x units minions >= x", 3, 1, 6));
                     laneClear.Add(new MenuBool("clearW", "Use lane clear W"));
                     laneClear.Add(new MenuSlider("clearCountW", "W hit x units minions >= x", 3, 1, 6));
-                    laneClear.Add(new MenuBool("clearE", "Use lane clear E"));
+                    laneClear.Add(new MenuBool("clearE", "Use lane clear E", false));
                     laneClear.Add(new MenuSlider("clearM", "Min mana percentage % to use clear", 40, 1));
                 }
                 orianna.Add(laneClear);
@@ -480,7 +480,7 @@ namespace FrOnDaL_AIO.Champions
 
                             foreach (var ballDistance in GameObjects.EnemyHeroes)
                             {
-                                if (_ballPos.Distance(ballDistance.Position) > 1600 && Main[Gamer.CharacterName]["combo"]["distE"])
+                                if (_ballPos.Distance(ballDistance.Position) > 1400 && Main[Gamer.CharacterName]["combo"]["distE"])
                                 {
                                     E.CastOnUnit(Gamer);
                                     Q.Cast(qPred.CastPosition);
@@ -792,7 +792,6 @@ namespace FrOnDaL_AIO.Champions
                 }
             }
         }
-
         private static void AntiGapCloser(AIHeroClient sender, Gapcloser.GapcloserArgs args)
         {
             if (Main[Gamer.CharacterName]["misc"]["gapcloser"]["gapE"])
