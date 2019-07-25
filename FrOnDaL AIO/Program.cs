@@ -20,28 +20,28 @@ namespace FrOnDaL_AIO
                 {
                     case "Ashe":
                         Ashe.GameOn();
-                        Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
+                        Chat.Print("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
                         break;
                     case "Katarina":
                         Katarina.GameOn();
-                        Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
+                        Chat.Print("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
                         break;
                     case "Orianna":
                         Orianna.GameOn();
-                        Chat.PrintChat("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
+                        Chat.Print("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " Loaded <font color='#1dff00'>by FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO " + ObjectManager.Player.CharacterName + " loaded");
                         break;
                     default:
-                        Chat.PrintChat("<font color='#b756c5' size='25'>FrOnDaL AIO Does Not Support " + ObjectManager.Player.CharacterName + " - By FrOnDaL</font>");
+                        Chat.Print("<font color='#b756c5' size='25'>FrOnDaL AIO Does Not Support " + ObjectManager.Player.CharacterName + " - By FrOnDaL</font>");
                         Console.WriteLine("FrOnDaL AIO Does Not Support " + ObjectManager.Player.CharacterName + " - By FrOnDaL");
                         break;
                 }
             }
             catch (Exception)
             {
-                Chat.PrintChat("Error in loading - By FrOnDaL");
+                Chat.Print("Error in loading - By FrOnDaL");
                 Console.WriteLine("Error in loading - By FrOnDaL");
             }
         }
