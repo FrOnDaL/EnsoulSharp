@@ -171,8 +171,8 @@ namespace FrOnDaL_AIO.Champions
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += SpellDraw;
             GameObject.OnCreate += CreateBall;
-            //AIBaseClient.OnProcessSpellCast += AutoAttackShield;
-            AIBaseClient.OnProcessSpellCast += AutoShield;
+            AIBaseClient.OnProcessSpellCast += AutoAttackShield;
+            //AIBaseClient.OnProcessSpellCast += AutoShield;
             Gapcloser.OnGapcloser += AntiGapCloser;
             Interrupter.OnInterrupterSpell += DangerousSpellsInterupt;
         }
@@ -555,7 +555,7 @@ namespace FrOnDaL_AIO.Champions
             }
         }
         
-        private static void AutoShield(AIBaseClient sender, AIBaseClientProcessSpellCastEventArgs args)
+       /* private static void AutoShield(AIBaseClient sender, AIBaseClientProcessSpellCastEventArgs args)
         {
             var enemy = sender as AIHeroClient;
             var ally = args.Target as AIHeroClient;
@@ -586,9 +586,9 @@ namespace FrOnDaL_AIO.Champions
                     }
                 }
             }
-        }
+        }*/
 
-       /* private static void AutoAttackShield(AIBaseClient sender, AIBaseClientProcessSpellCastEventArgs args)
+        private static void AutoAttackShield(AIBaseClient sender, AIBaseClientProcessSpellCastEventArgs args)
         {
             if (Gamer.ManaPercent >= Main[Gamer.CharacterName]["autoshield"]["eMana"].GetValue<MenuSlider>().Value && Main[Gamer.CharacterName]["autoshield"]["shieldE"] && Main[Gamer.CharacterName]["autoshield"]["shieldAae"] && E.IsReady() && !Gamer.IsRecalling())
             {
@@ -615,7 +615,7 @@ namespace FrOnDaL_AIO.Champions
                     }
                 }
             }
-        }*/
+        }
 
         private static void Harass()
         {
