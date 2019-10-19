@@ -4,7 +4,7 @@ using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using EnsoulSharp.SDK.Clipper;
 using Color = System.Drawing.Color;
 
 namespace FrOnDaL_AIO.Common.Utilities.SpellBlocking
