@@ -1,0 +1,14 @@
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\FrOnDaL AIO.exe.config
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\FrOnDaL AIO.exe
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\FrOnDaL AIO.pdb
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\EnsoulSharp.Sandbox.dll
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\EnsoulSharp.SDK.dll
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\EnsoulSharp.Wrapper.dll
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\SharpDX.dll
+C:\Users\Frondal\Desktop\FrOnDaL AIO\bin\Release\Newtonsoft.Json.dll
+C:\Users\Frondal\Desktop\FrOnDaL AIO\obj\Debug\FrOnDaL AIO.csprojAssemblyReference.cache
+C:\Users\Frondal\Desktop\FrOnDaL AIO\obj\Debug\FrOnDaL AIO.csproj.CoreCompileInputs.cache
+C:\Users\Frondal\Desktop\FrOnDaL AIO\obj\Debug\FrOnDaL AIO.csproj.CopyComplete
+C:\Users\Frondal\Desktop\FrOnDaL AIO\obj\Debug\FrOnDaL AIO.exe
+C:\Users\Frondal\Desktop\FrOnDaL AIO\obj\Debug\FrOnDaL AIO.pdb
